@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>返回顶部</title>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	#tit{
+		width: 50px;
+		height: 200px;
+		background: yellow;
+		text-align: center;
+		line-height: 50px;
+		cursor: pointer;
+		position: fixed;
+		right: 0px;
+		bottom: 0px;
+	}
+	div{
+		width: 100px;
+		height: 5000px;
+		font-size: 50px;
+	}
+</style>
+</head>
+<body>
+	<h1 id="tit">返回顶部</h1>
+	<div>有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人</div>
+<script>
+	var tit=document.getElementById('tit');
+	function addEvent(obj,type,fn){
+		if (obj.addEventListener) {
+			obj.addEventListener(type,fn,false);
+		}else{
+			obj.attachEvent('on'+type,fn);
+		}
+	}
+	function add(){
+		document.body.scrollTop=0;
+		window.pageYOffset=0;
+		document.documentElement.scrollTop=0;
+	}
+	addEvent(tit,'click',add);
+
+	/*var tit=document.getElementById('tit');
+	tit.onclick=function(){
+		document.body.scrollTop=0;
+		window.pageYOffset=0;
+		document.documentElement.scrollTop=0;
+	}*/
+</script>	
+</body>
+</html>

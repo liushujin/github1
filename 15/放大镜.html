@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>放大镜</title>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	#con{
+		position: relative;
+	}
+	#minBox{
+		width: 350px;
+		height: 350px;
+		position: absolute;
+		left: 20px;
+		top: 20px;
+	}
+	#minImg{
+		width: 350px;
+		height: 350px;
+	}
+	#maxBox{
+		width: 400px;
+		height: 400px;
+		position: absolute;
+		left: 380px;
+		top: 20px;
+		overflow: hidden;
+		display: none;
+		z-index: 10;
+	}
+	#maxImg{
+		width: 800px;
+		height: 800px;
+	}
+	#mask{
+		width: 175px;
+		height: 175px;
+		background: yellow;
+		opacity: 0.5;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		cursor: move;
+		display: none;
+	}
+	#msgImg{
+		position: absolute;
+		left: 380px;
+		top: 20px;
+		z-index: 5;
+	}
+</style>
+</head>
+<body>
+	<div id="con">
+		<div id="minBox">
+			<img src="img/min.jpg" alt="" id="minImg">
+			<div id="mask"></div>
+		</div>
+		<div id="maxBox">
+			<img src="img/max.jpg" alt="" id="maxImg">
+		</div>
+		<img src="img/msg.jpg" alt="" id="msgImg">
+	</div>
+<script>
+	var minBox=document.getElementById('minBox');
+	var minImg=document.getElementById('minImg');
+	var maxBox=document.getElementById('maxBox');
+	var maxImg=document.getElementById('maxImg');
+	var mask=document.getElementById('mask');
+	function offsetLT(obj){
+		var l=0,t=0;
+		while(obj){
+			l+=obj.offsetLeft;
+			t+=obj.offsetTop;
+			obj=obj.offsetParent;
+		}
+		return{left:l,top:t};
+	}
+	minBox.onmousemove=function(ev){
+		mask.style.display='block';
+		maxBox.style.display='block';
+		var event=ev||window.event;
+		var winW=document.documentElement.clientWidth;
+		var winH=document.documentElement.clientHeight;
+		var l=event.clientX-offsetLT(minBox).left-mask.offsetWidth/2;
+		if (l<0) {
+			l=0;
+		}
+		if (l>minBox.clientWidth-mask.clientWidth) {
+			l=minBox.clientWidth-mask.clientWidth;
+		};
+		var t=event.clientY-offsetLT(minBox).top-mask.offsetHeight/2;
+		if (t<0) {
+			t=0;
+		};
+		if (t>minBox.clientHeight-mask.clientHeight) {
+			t=minBox.clientHeight-mask.clientHeight;
+		};
+		mask.style.left=l+'px';
+		mask.style.top=t+'px';
+		var scale=(maxImg.clientWidth-maxBox.clientWidth)/(minImg.clientWidth-mask.clientWidth);
+		maxBox.scrollLeft=l*scale;
+		maxBox.scrollTop=t*scale;
+	}
+	minBox.onmouseout=function(){
+		mask.style.display='none';
+		maxBox.style.display='none';
+	}
+</script>	
+</body>
+</html>

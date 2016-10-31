@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>返回顶部</title>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	#tit{
+		width: 50px;
+		height: 200px;
+		background: yellow;
+		text-align: center;
+		line-height: 50px;
+		cursor: pointer;
+		position: fixed;
+		right: 0px;
+		bottom: 0px;
+	}
+	div{
+		width: 100px;
+		height: 5000px;
+		font-size: 50px;
+	}
+</style>
+</head>
+<body>
+	<h1 id="tit">返回顶部</h1>
+	<div>有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人有些人</div>
+<script>
+	var tit=document.getElementById('tit');
+	var time=null;
+	window.onscroll=function(){
+		tit.onclick=function(){
+			var scrollTop=document.body.scrollTop||window.pageYOffset||document.documentElement.scrollTop;
+			var start=scrollTop;
+			var end=0;
+			var eve=(end-start)/30;
+			var step=0;
+			time=setInterval(function(){
+				step++;
+				if (step>=30) {
+					clearInterval(time);
+				};
+				start+=eve;
+				document.body.scrollTop=start;
+				window.pageYOffset=start;
+				document.documentElement.scrollTop=start;
+			},10)
+		}
+	}
+		
+</script>	
+</body>
+</html>

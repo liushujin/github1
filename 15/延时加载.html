@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>延时加载</title>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.wrap{
+		width: 1000px;
+		margin: 0px auto;
+
+	}
+	h1{
+		font-size: 30px;
+		text-align: center;
+		margin: 20px 0px;
+	}
+	#inner{
+		width: 1040px;
+		overflow: hidden;
+	}
+	#inner img{
+		width: 480px;
+		height: 300px;
+		float: left;
+		margin: 20px 40px 20px 0px;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<h1>美景</h1>
+		<div id="inner">
+			<img orc="img/1.jpg" alt="">
+			<img orc="img/3.jpg" alt="">
+			<img orc="img/4.jpg" alt="">
+			<img orc="img/5.jpg" alt="">
+			<img orc="img/6.jpg" alt="">
+			<img orc="img/7.jpg" alt="">
+			<img orc="img/8.jpg" alt="">
+			<img orc="img/9.jpg" alt="">
+			<img orc="img/10.jpg" alt="">
+			<img orc="img/11.jpg" alt="">
+			<img orc="img/12.jpg" alt="">
+			<img orc="img/13.jpg" alt="">
+			<img orc="img/14.jpg" alt="">
+			<img orc="img/15.jpg" alt="">
+			<img orc="img/16.jpg" alt="">
+			<img orc="img/17.jpg" alt="">
+			<img orc="img/18.jpg" alt="">
+			<img orc="img/19.jpg" alt="">
+			<img orc="img/20.jpg" alt="">
+		</div>
+	</div>
+<script>
+	var inner=document.getElementById('inner');
+	var imgs=inner.getElementsByTagName('img');
+	function offsetLT(obj){
+		var l=0,t=0;
+		while(obj){
+			t+=obj.offsetTop;
+			l+=obj.offsetLeft;
+			obj=obj.offsetParent;
+		}
+		return {left:l,top:t};
+	}
+	window.onscroll=window.onload=function(){
+		var winH=document.documentElement.clientHeight;
+		var scrollTop=document.body.scrollTop||window.pageYoffset||document.documentElement.scrollTop;
+		for (var i = 0; i < imgs.length; i++) {
+			if (offsetLT(imgs[i]).top<scrollTop+winH) {
+				imgs[i].src=imgs[i].getAttribute('orc');
+			};
+		};
+	}
+</script>	
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>offset</title>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	#outer{
+		width: 500px;
+		height: 500px;
+		background: red;
+		position: absolute;
+		left: 50px;
+		top: 50px;
+	}
+	#inner{
+		width: 300px;
+		height: 300px;
+		background: orange;
+		position: absolute;
+		left: 50px;
+		top: 50px;
+	}
+	#child{
+		width: 100px;
+		height: 100px;
+		background: green;
+		position: absolute;
+		left: 50px;
+		top: 50px;
+	}
+</style>
+</head>
+<body>
+	<div id="outer">
+		<div id="inner">
+			<div id="child"></div>
+		</div>
+	</div>
+<script>
+	var outer=document.getElementById('outer');
+	var inner=document.getElementById('inner');
+	var child=document.getElementById('child');
+	// console.log(child.offsetLeft);//50
+	// console.log(inner.offsetLeft);//50
+	// console.log(outer.offsetLeft);//50
+	
+
+	/*var l=0;
+	l=child.offsetLeft;//50(child)
+	l=l+child.offsetParent.offsetLeft;//100(inner)
+	l=l+child.offsetParent.offsetParent.offsetLeft;//150(outer)
+	l=l+child.offsetParent.offsetParent.offsetParent.offsetLeft;//150(body)
+	console.log(l);//150*/
+	// console.log(child.offsetParent.offsetParent.offsetParent.offsetParent);//null
+
+	/*var l=0;
+	while(child){
+		l+=child.offsetLeft;
+		child=child.offsetParent;
+	}
+	console.log(l);//150*/
+
+	/*var l=0;
+	while(inner){
+		l+=inner.offsetLeft;
+		inner=inner.offsetParent;
+	}
+	console.log(l);//100*/
+
+	/*var l=0;
+	while(outer){
+		l+=outer.offsetLeft;
+		outer=outer.offsetParent;
+	}
+	console.log(l);//50*/
+
+	/*var l=0;
+	while(child){
+		l+=child.offsetTop;
+		child=child.offsetParent;
+	}
+	console.log(l);//150*/
+
+//封装函数
+	function offsetLT (obj) {
+		var l=0,t=0;
+		while(obj){
+			l+=obj.offsetLeft;
+			t+=obj.offsetTop;
+			obj=obj.offsetParent;
+		}
+		return{left:l,top:t};
+	}
+	console.log(offsetLT(child).left);
+</script>	
+</body>
+</html>
